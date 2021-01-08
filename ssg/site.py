@@ -7,25 +7,14 @@ class Site:
         self.dest = Path(dest)
 
 
-def create_dir(self, path):
-    directory = self.dest + "/" + Path.relative_to(self.source)
-    Path.mkdir(directory,parents=True, exist_ok=True)
+    def create_dir(self, path):
+        directory = self.dest / path.relative_to(self.source)
+        directory.mkdir(parents=True, exist_ok=True)
 
 
-def build(self):
-    Path.mkdir(self.dest,parents=True, exist_ok=True)
-    for path in self.source.rglob("*"):
-        if path.is_dir():
-            create_dir(self, path)
-
-
-def main(source="content", dest="dist"):
-    config = {
-        "source": source,
-        "dest": dest
-    }
-    x = Site(**config)
-    x.build()
-
-
-typer.run(main())
+    def build(self):
+        self.dest.mkdir(parents=True, exist_ok=True)
+        for path in self.source.rglob("*"):
+            if path.is_dir():
+                self.create_dir(path)
+            print ('IF statement length ' + len(for_loop.if_.value))
